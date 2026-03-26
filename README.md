@@ -12,7 +12,7 @@
 	- Button → 숫자 입력 및 연산 기능 수행
 	
 - 사용한 기술과 구현한 기능:
-	- Visual Studio를 이용하여 UI 디자인
+	- Visual Studio를 이용하여 UI 디자인함
 	- ToString() 메서드를 사용하여 계산 결과를 문자열로 변환 후 TextBox에 출력
 	- int.Parse()를 사용하여 TextBox의 문자열 데이터를 정수형(int)으로 변환하여 계산 수행
 
