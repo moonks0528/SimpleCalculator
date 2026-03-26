@@ -51,23 +51,29 @@
             this.btnDot = new System.Windows.Forms.Button();
             this.btnNum0 = new System.Windows.Forms.Button();
             this.btnPlusMinus = new System.Windows.Forms.Button();
+            this.lstHistory = new System.Windows.Forms.ListBox();
+            this.btnHistoryReset = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
             // inputNumBox
             // 
-            this.inputNumBox.Font = new System.Drawing.Font("굴림", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
+            this.inputNumBox.BackColor = System.Drawing.SystemColors.ControlLightLight;
+            this.inputNumBox.Font = new System.Drawing.Font("굴림", 16.125F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
             this.inputNumBox.Location = new System.Drawing.Point(112, 136);
             this.inputNumBox.Name = "inputNumBox";
-            this.inputNumBox.Size = new System.Drawing.Size(422, 44);
+            this.inputNumBox.ReadOnly = true;
+            this.inputNumBox.Size = new System.Drawing.Size(422, 57);
             this.inputNumBox.TabIndex = 0;
             this.inputNumBox.TextChanged += new System.EventHandler(this.inputNumBox_TextChanged);
             // 
             // outputNumBox
             // 
-            this.outputNumBox.Font = new System.Drawing.Font("굴림", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
-            this.outputNumBox.Location = new System.Drawing.Point(112, 205);
+            this.outputNumBox.BackColor = System.Drawing.SystemColors.ControlLightLight;
+            this.outputNumBox.Font = new System.Drawing.Font("굴림", 16.125F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
+            this.outputNumBox.Location = new System.Drawing.Point(112, 220);
             this.outputNumBox.Name = "outputNumBox";
-            this.outputNumBox.Size = new System.Drawing.Size(422, 44);
+            this.outputNumBox.ReadOnly = true;
+            this.outputNumBox.Size = new System.Drawing.Size(422, 57);
             this.outputNumBox.TabIndex = 1;
             this.outputNumBox.TextAlignChanged += new System.EventHandler(this.outputNumBox_TextChanged);
             // 
@@ -322,11 +328,33 @@
             this.btnPlusMinus.UseVisualStyleBackColor = false;
             this.btnPlusMinus.Click += new System.EventHandler(this.btnPlusMinus_Click);
             // 
+            // lstHistory
+            // 
+            this.lstHistory.FormattingEnabled = true;
+            this.lstHistory.ItemHeight = 24;
+            this.lstHistory.Location = new System.Drawing.Point(606, 136);
+            this.lstHistory.Name = "lstHistory";
+            this.lstHistory.Size = new System.Drawing.Size(314, 508);
+            this.lstHistory.TabIndex = 23;
+            // 
+            // btnHistoryReset
+            // 
+            this.btnHistoryReset.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(192)))), ((int)(((byte)(255)))));
+            this.btnHistoryReset.Location = new System.Drawing.Point(673, 650);
+            this.btnHistoryReset.Name = "btnHistoryReset";
+            this.btnHistoryReset.Size = new System.Drawing.Size(200, 59);
+            this.btnHistoryReset.TabIndex = 24;
+            this.btnHistoryReset.Text = "Reset History";
+            this.btnHistoryReset.UseVisualStyleBackColor = false;
+            this.btnHistoryReset.Click += new System.EventHandler(this.btnHistoryReset_Click);
+            // 
             // CalculatorVersion1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(13F, 24F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(701, 842);
+            this.ClientSize = new System.Drawing.Size(981, 842);
+            this.Controls.Add(this.btnHistoryReset);
+            this.Controls.Add(this.lstHistory);
             this.Controls.Add(this.btnEqual);
             this.Controls.Add(this.btnDot);
             this.Controls.Add(this.btnNum0);
@@ -350,8 +378,10 @@
             this.Controls.Add(this.calculatorName);
             this.Controls.Add(this.outputNumBox);
             this.Controls.Add(this.inputNumBox);
+            this.KeyPreview = true;
             this.Name = "CalculatorVersion1";
             this.Text = "Calculator v1.0";
+            this.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.CalculatorVersion1_KeyPress);
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -382,6 +412,8 @@
         private System.Windows.Forms.Button btnDot;
         private System.Windows.Forms.Button btnNum0;
         private System.Windows.Forms.Button btnPlusMinus;
+        private System.Windows.Forms.ListBox lstHistory;
+        private System.Windows.Forms.Button btnHistoryReset;
     }
 }
 

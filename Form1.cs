@@ -3,6 +3,7 @@ using System.Windows.Forms;
 
 namespace SimpleCalculator
 {
+
     public partial class CalculatorVersion1 : Form
     {
         int firstNumber = 0;
@@ -121,6 +122,8 @@ namespace SimpleCalculator
             {
                 inputNumBox.Text = firstNumber.ToString() + " " + GetDisplayOperator();
             }
+
+            isOperatorClicked = false;
         }
 
 
@@ -199,7 +202,21 @@ namespace SimpleCalculator
 
         private void btnPlusMinus_Click(object sender, EventArgs e)
         {
+            if (outputNumBox.Text == "") return;
 
+            double num = double.Parse(outputNumBox.Text);
+            num = -num;
+
+            outputNumBox.Text = num.ToString();
+
+            if (op == "")
+            {
+                inputNumBox.Text = outputNumBox.Text;
+            }
+            else
+            {
+                inputNumBox.Text = firstNumber.ToString() + " " + GetDisplayOperator() + " " + outputNumBox.Text;
+            }
         }
 
         private void btnDot_Click(object sender, EventArgs e)
@@ -229,7 +246,7 @@ namespace SimpleCalculator
             {
                 if (secondNumber == 0)
                 {
-                    MessageBox.Show("0으로 나눌 수 없습니다.");
+                    outputNumBox.Text = ("0으로 나눌 수 없습니다.");
                     return;
                 }
 
@@ -238,14 +255,70 @@ namespace SimpleCalculator
 
             inputNumBox.Text = firstNumber.ToString() + " " + GetDisplayOperator() + " " + secondNumber.ToString() + " = " + result.ToString();
             outputNumBox.Text = result.ToString();
+            lstHistory.Items.Add(inputNumBox.Text);
 
             op = "";
             isOperatorClicked = true;
         }
 
-        private void inputNumBox_TextChanged_1(object sender, EventArgs e)
+        private void btnHistoryReset_Click(object sender, EventArgs e)
+        {
+            lstHistory.Items.Clear();
+        }
+
+        private void CalculatorVersion1_KeyPress(object sender, KeyPressEventArgs e)
         {
 
+            if (char.IsDigit(e.KeyChar))
+            {
+                InputNumber(e.KeyChar.ToString());
+                e.Handled = true;
+            }
+
+
+            else if (e.KeyChar == '+')
+            {
+                if (outputNumBox.Text != "")
+                    btnPlus_Click(null, null);
+
+                e.Handled = true;
+            }
+
+
+            else if (e.KeyChar == '-')
+            {
+                btnSubtract_Click(null, null);
+            }
+
+
+            else if (e.KeyChar == '*')
+            {
+                btnMultiply_Click(null, null);
+            }
+
+
+            else if (e.KeyChar == '/')
+            {
+                btnDivide_Click(null, null);
+            }
+
+  
+            else if (e.KeyChar == '.')
+            {
+                btnDot_Click(null, null);
+            }
+
+
+            else if (e.KeyChar == (char)Keys.Enter)
+            {
+                btnEqual_Click(null, null);
+            }
+
+
+            else if (e.KeyChar == (char)Keys.Back)
+            {
+                btnDel_Click(null, null);
+            }
         }
     }
 }

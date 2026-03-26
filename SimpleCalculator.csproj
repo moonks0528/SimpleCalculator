@@ -84,10 +84,17 @@
   <ItemGroup>
     <Content Include="img\ScreenShot1.png" />
     <Content Include="img\ScreenShot10.png" />
+    <Content Include="img\ScreenShot100.png" />
     <Content Include="img\ScreenShot11.png" />
     <Content Include="img\ScreenShot12.png" />
     <Content Include="img\ScreenShot13.png" />
     <Content Include="img\ScreenShot14.png" />
+    <Content Include="img\ScreenShot15-1.png" />
+    <Content Include="img\ScreenShot15.png" />
+    <Content Include="img\ScreenShot16.png" />
+    <Content Include="img\ScreenShot17.png" />
+    <Content Include="img\ScreenShot18.png" />
+    <Content Include="img\ScreenShot19.png" />
     <Content Include="img\ScreenShot2.png" />
     <Content Include="img\ScreenShot3.png" />
     <Content Include="img\ScreenShot4.png" />
