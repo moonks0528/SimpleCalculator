@@ -39,7 +39,7 @@
 
 ![과제1 실행화면4](img/ScreenShot4.png)
 - 과제1 코드의 실행 스크린샷4
-	- = 버튼 누르면 계산 결과가 outputNumBox에 최종적으로결과값만표시 표시
+	- = 버튼 누르면 계산 결과가 outputNumBox에 최종적으로결과값만표시 표시됨
 	
 - 과제 내용
 	- Label, TextBox, Button 컨트롤을 활용하여 계산기 UI를 구성
