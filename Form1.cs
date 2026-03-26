@@ -1,11 +1,4 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
 
 namespace SimpleCalculator
@@ -33,6 +26,19 @@ namespace SimpleCalculator
 
         }
 
+
+        private string GetDisplayOperator()
+        {
+            if (op == "*")
+                return "X";
+
+            if (op == "/")
+                return "÷";
+
+            return op;
+        }
+
+
         private void InputNumber(string number)
         {
             if (isOperatorClicked)
@@ -49,7 +55,7 @@ namespace SimpleCalculator
             }
             else
             {
-                inputNumBox.Text = firstNumber.ToString() + " " + op + " " + outputNumBox.Text;
+                inputNumBox.Text = firstNumber.ToString() + " " + GetDisplayOperator() + " " + outputNumBox.Text;
             }
         }
 
@@ -72,7 +78,6 @@ namespace SimpleCalculator
         {
             InputNumber("4");
         }
-
 
         private void btnNum5_Click(object sender, EventArgs e)
         {
@@ -106,35 +111,80 @@ namespace SimpleCalculator
 
         private void btnClearEntry_Click(object sender, EventArgs e)
         {
+            outputNumBox.Text = "";
 
+            if (op == "")
+            {
+                inputNumBox.Text = "";
+            }
+            else
+            {
+                inputNumBox.Text = firstNumber.ToString() + " " + GetDisplayOperator();
+            }
         }
+
 
         private void Clear_Click(object sender, EventArgs e)
         {
+            firstNumber = 0;
+            secondNumber = 0;
+            result = 0;
+            op = "";
+            isOperatorClicked = false;
 
+            inputNumBox.Text = "";
+            outputNumBox.Text = "";
         }
 
         private void btnDel_Click(object sender, EventArgs e)
         {
+            if (outputNumBox.Text.Length > 0)
+            {
+                outputNumBox.Text = outputNumBox.Text.Substring(0, outputNumBox.Text.Length - 1);
+            }
 
+            if (op == "")
+            {
+                inputNumBox.Text = outputNumBox.Text;
+            }
+            else
+            {
+                inputNumBox.Text = firstNumber.ToString() + " " + GetDisplayOperator() + " " + outputNumBox.Text;
+            }
         }
 
         private void btnDivide_Click(object sender, EventArgs e)
         {
+            if (outputNumBox.Text == "") return;
 
+            firstNumber = int.Parse(outputNumBox.Text);
+            op = "/";
+            isOperatorClicked = true;
+
+            inputNumBox.Text = firstNumber.ToString() + " " + GetDisplayOperator();
         }
-
 
         private void btnMultiply_Click(object sender, EventArgs e)
         {
+            if (outputNumBox.Text == "") return;
 
+            firstNumber = int.Parse(outputNumBox.Text);
+            op = "*";
+            isOperatorClicked = true;
+
+            inputNumBox.Text = firstNumber.ToString() + " " + GetDisplayOperator();
         }
 
         private void btnSubtract_Click(object sender, EventArgs e)
         {
+            if (outputNumBox.Text == "") return;
 
+            firstNumber = int.Parse(outputNumBox.Text);
+            op = "-";
+            isOperatorClicked = true;
+
+            inputNumBox.Text = firstNumber.ToString() + " " + GetDisplayOperator();
         }
-
 
         private void btnPlus_Click(object sender, EventArgs e)
         {
@@ -144,7 +194,7 @@ namespace SimpleCalculator
             op = "+";
             isOperatorClicked = true;
 
-            inputNumBox.Text = firstNumber.ToString() + " " + op;
+            inputNumBox.Text = firstNumber.ToString() + " " + GetDisplayOperator();
         }
 
         private void btnPlusMinus_Click(object sender, EventArgs e)
@@ -162,9 +212,31 @@ namespace SimpleCalculator
             if (outputNumBox.Text == "" || op == "") return;
 
             secondNumber = int.Parse(outputNumBox.Text);
-            result = firstNumber + secondNumber;
 
-            inputNumBox.Text = firstNumber.ToString() + " " + op + " " + secondNumber.ToString() + " = " + result.ToString();
+            if (op == "+")
+            {
+                result = firstNumber + secondNumber;
+            }
+            else if (op == "-")
+            {
+                result = firstNumber - secondNumber;
+            }
+            else if (op == "*")
+            {
+                result = firstNumber * secondNumber;
+            }
+            else if (op == "/")
+            {
+                if (secondNumber == 0)
+                {
+                    MessageBox.Show("0으로 나눌 수 없습니다.");
+                    return;
+                }
+
+                result = firstNumber / secondNumber;
+            }
+
+            inputNumBox.Text = firstNumber.ToString() + " " + GetDisplayOperator() + " " + secondNumber.ToString() + " = " + result.ToString();
             outputNumBox.Text = result.ToString();
 
             op = "";

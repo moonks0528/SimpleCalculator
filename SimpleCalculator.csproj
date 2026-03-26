@@ -83,9 +83,19 @@
   <ItemGroup />
   <ItemGroup>
     <Content Include="img\ScreenShot1.png" />
+    <Content Include="img\ScreenShot10.png" />
+    <Content Include="img\ScreenShot11.png" />
+    <Content Include="img\ScreenShot12.png" />
+    <Content Include="img\ScreenShot13.png" />
+    <Content Include="img\ScreenShot14.png" />
     <Content Include="img\ScreenShot2.png" />
     <Content Include="img\ScreenShot3.png" />
     <Content Include="img\ScreenShot4.png" />
+    <Content Include="img\ScreenShot5.png" />
+    <Content Include="img\ScreenShot6.png" />
+    <Content Include="img\ScreenShot7.png" />
+    <Content Include="img\ScreenShot8.png" />
+    <Content Include="img\ScreenShot9.png" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
